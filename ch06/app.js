@@ -86,3 +86,8 @@ const sumOld = function () {
 };
 
 console.log(sumUp(1, 2, 3, 4, 5, 6));
+
+function dummy() {
+  console.log("함수는 객체다");
+}
+console.dir(dummy);
