@@ -5,17 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>DOM Interaction</title>
+    <style>
+      .red-bg {
+        background-color: red;
+        color: #fff;
+      }
+      .visible {
+        display: block;
+      }
+      .invisible {
+        display: none;
+      }
+    </style>
     <script src="app.js" defer></script>
   </head>
   <body>
     <header>
-      <h1 id="main-title" class="messiClass">messi</h1>
+      <section class="red-bg">
+        <h1 id="main-title" class="messiClass">messi</h1>
+      </section>
       <ul>
-        <li class="list-itme">Item 1</li>
+        <li class="list-itme">Item 1<span>messi</span></li>
         <li class="list-item">Item 2</li>
         <li class="list-item">Item 3</li>
       </ul>
-      <input type="text" value="default text" />
+      <div>
+        <input type="text" value="default text" />
+      </div>
+      <button>Toggle</button>
     </header>
   </body>
 </html>
