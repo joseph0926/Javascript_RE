@@ -8,20 +8,34 @@ const dummyTextBox = document.getElementById("entry-text");
 
 const movies = [];
 
-const movieListHandler = () => {
-  const movieList = document.createElement("li");
+const removeMovieHandler = (movieId) => {
+  let movieIndex = 0;
   for (const movie of movies) {
-    movieList.className = "movie-element";
-    movieList.innerHTML = `
-      <div class="movie-element__image">
-        <img src=${movie.imgUrl}>
-      </div>
-      <div class="movie-element__info">
-        <h2>${movie.title}</h2>
-        <p>${movie.rate}</p>
-      </div>
-    `;
+    if (movie.id === movieId) {
+      break;
+    }
+    movieIndex++;
   }
+  movies.splice(movieIndex, 1);
+  const listRoot = document.getElementById("movie-list");
+  listRoot.children[movieIndex].remove();
+};
+
+const movieListHandler = (id, title, imgUrl, rate) => {
+  const movieList = document.createElement("li");
+  movieList.className = "movie-element";
+  movieList.innerHTML = `
+    <div class="movie-element__image>
+      <img src="${imgUrl}">
+    </div>
+    <div class="movie-element__info">
+      <h2>${title}</h2>
+      <p>${rate}</p>
+    </div>
+  `;
+  movieList.addEventListener("click", removeMovieHandler.bind(null, id));
+  const listRoot = document.getElementById("movie-list");
+  listRoot.append(movieList);
 };
 
 const updateUI = () => {
@@ -30,7 +44,6 @@ const updateUI = () => {
   } else {
     dummyTextBox.style.display = "none";
   }
-  movieListHandler();
 };
 
 const toggleBackdropHandler = () => {
@@ -62,6 +75,7 @@ const addMovieHandler = () => {
   }
 
   const newMovie = {
+    id: Math.random().toString(),
     title: title,
     imgUrl: imgUrl,
     rate: rate,
@@ -71,6 +85,7 @@ const addMovieHandler = () => {
 
   clearInput();
   removeModalHandler();
+  movieListHandler(newMovie.id, newMovie.title, newMovie.imgUrl, newMovie.rate);
   updateUI();
 };
 
