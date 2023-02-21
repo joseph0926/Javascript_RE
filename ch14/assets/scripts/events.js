@@ -30,3 +30,11 @@ window.addEventListener("scroll", scrollHandler);
 const submitHandler = (event) => {
   event.preventDefault();
 };
+
+const listItem = document.querySelector("li");
+const list = document.querySelector("ul");
+const form = document.querySelector("form");
+list.addEventListener("click", (event) => {
+  event.target.classList.toggle("highlight");
+  form.submit();
+});
