@@ -26,3 +26,11 @@ const prodPrice = 29.99;
 const dummyOutput = dummyFn`This product ${prodName} is $${prodPrice}!`;
 
 const regex = /^\S+@\S+\.\S+$/;
+
+const button = document.querySelector("button");
+
+const buttonClickHandler = (event) => {
+  console.log(event);
+};
+
+button.addEventListener("click", buttonClickHandler);
