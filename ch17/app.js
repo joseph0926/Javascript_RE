@@ -10,7 +10,7 @@ const setTimer = (duration) => {
   return promise;
 };
 
-const sucLocationCB = (curData) => {
+/* const sucLocationCB = (curData) => {
   console.log(curData);
 };
 const errLocationCB = (errorData) => {
@@ -18,9 +18,9 @@ const errLocationCB = (errorData) => {
     console.log(data);
     console.log(errorData);
   });
-};
+}; */
 
-const dummyFn = () => {
+/* const dummyFn = () => {
   navigator.geolocation.getCurrentPosition(sucLocationCB, errLocationCB);
   setTimer(0).then(() => {
     console.log("이건 언제 실행될까...?");
@@ -31,6 +31,22 @@ const dummyFn = () => {
     result += i;
   }
   console.log(result);
+}; */
+
+const dummyFn2 = async () => {
+  try {
+    const timeData = await setTimer(2000);
+  } catch (error) {
+    console.log(erro);
+  }
+  console.log(timeData);
+};
+
+const getPosition = navigator.geolocation.getCurrentPosition();
+
+const dummyFn = () => {
+  let positionData;
+  getPosition().then();
 };
 
 button.addEventListener("click", dummyFn);
@@ -40,3 +56,14 @@ for (let i = 0; i < 100000000; i++) {
   result += i;
 }
 console.log(result); */
+
+const dummy = (num) => {
+  const innerDummy = (innerNum) => {
+    console.log("내부함수");
+    return num + innerNum;
+  };
+  console.log("외부함수");
+  return innerDummy;
+};
+const someDummy = dummy(5);
+console.log(someDummy(10));
